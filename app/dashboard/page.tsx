@@ -57,7 +57,7 @@ export default async function DashboardPage() {
 
       {/* Lista de páginas */}
       <div className="flex flex-col gap-4">
-        {user?.pages.map((page) => (
+        {user?.pages.map((page: { id: string; name: string; description: string; slug: string }) => (
           <div
             key={page.id}
             className="bg-white border rounded-lg p-4 shadow-sm hover:shadow transition flex justify-between items-center"
