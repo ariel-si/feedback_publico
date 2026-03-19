@@ -32,7 +32,9 @@ export async function createPage(data: {
     where: { email: token.email as string },
   });
 
-  if (!user) throw new Error("User not found");
+  if (!user) {
+    throw new Error("Usuário não encontrado");
+  }
 
   const slug = `${slugify(data.name, { lower: true })}-${Math.random()
     .toString(36)

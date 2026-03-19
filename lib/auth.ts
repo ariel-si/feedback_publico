@@ -1,4 +1,4 @@
-// src/lib/auth.ts
+// lib/auth.ts
 
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
@@ -9,8 +9,8 @@ export const authOptions = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
 
       async authorize(credentials) {
@@ -25,12 +25,18 @@ export const authOptions = {
 
         if (!user) return null;
 
-        const valid = await bcrypt.compare(password, user.password);
+        let valid = false;
+
+        try {
+          valid = await bcrypt.compare(password, user.password);
+        } catch (e) {
+          return null;
+        }
 
         if (!valid) return null;
 
         return {
-          id: user.id,
+          id: String(user.id),
           email: user.email,
         };
       },
