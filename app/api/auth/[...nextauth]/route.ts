@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import type { NextRequest } from "next/server";
 import { authOptions } from "@/lib/auth";
 
-const nextAuthHandler = NextAuth(authOptions);
+const nextAuthHandler: any = NextAuth(authOptions);
 
 export async function GET(request: NextRequest) {
   return nextAuthHandler(request as any);
