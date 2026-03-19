@@ -1,11 +1,9 @@
 import NextAuth from "next-auth";
-import { authOptions } from "@/lib/auth";
 import type { NextRequest } from "next/server";
+import { authOptions } from "@/lib/auth";
 
-// cria handler
-const nextAuthHandler: any = NextAuth(authOptions);
+const nextAuthHandler = NextAuth(authOptions);
 
-// força tipagem correta pro Next 16
 export async function GET(request: NextRequest) {
   return nextAuthHandler(request as any);
 }
