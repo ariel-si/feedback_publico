@@ -53,8 +53,8 @@ src/
 ### 1. Clonar o repositório
 
 ```bash
-git clone <repo-url>
-cd <project-name>
+git clone https://github.com/ariel-si/feedback_publico.git
+cd feedback_publico
 ```
 
 ### 2. Instalar dependências
